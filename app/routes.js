@@ -10,15 +10,13 @@ module.exports = router
 router.route('/auth')
     .post(userController.loginUser)
 
-console.log(jwt.validateToken)
-
 // list products
 router.route('/products')
     .get(jwt.validateToken, productController.showProducts)
 
 // user routes
 router.route('/users')
-    .get(userController.showUsers)
+    .get(jwt.validateToken, userController.showUsers)
     .post(userController.createUser)
 
 
