@@ -9,7 +9,7 @@ function showProducts (request, response) {
     //get all products
     Product.find({}, (err, products) => {
         if(err)
-            response.status(404).json({message: 'Products not found.'})
+            return response.status(404).json({message: 'Products not found.'})
         response.status(200).json(products)
     })
 

@@ -14,7 +14,7 @@ function validateToken (request, response, next) {
             console.log('decoding ' + decoded)
             // verify if token is outdated
             if (decoded.exp <= Date.now()) {
-                response.json(400, {error: 'Access expirated, please login again.'})
+                return response.json(401, {error: 'Access expirated, please login again.'})
             }
             // search for id that came with token
             User.findOne({ _id: decoded.iss }, function(err, user) {

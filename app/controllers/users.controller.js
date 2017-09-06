@@ -49,7 +49,7 @@ function loginUser (request, response) {
             if(!isMatch)
                 response.status(401).json({message: 'Password does not match.'})
             // set expiration time and token with secret fcamara
-            var expires = moment().add(60, 'minutes').valueOf(),
+            var expires = moment().add(60, 'seconds').valueOf(),
                 token = jwt.encode({
                     iss: user.id,
                     exp: expires
